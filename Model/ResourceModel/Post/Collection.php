@@ -45,14 +45,7 @@ class Collection extends AbstractCollection
     public function addStoreFilter($storeId)
     {
         // NOT EXISTS is compatibility for prev versions
-        $this->getSelect()
-            ->where("EXISTS (SELECT * FROM `{$this->getTable('mst_blog_store_post')}`
-                AS `store_post`
-                WHERE e.entity_id = store_post.post_id
-                AND store_post.store_id in (?))
-                OR NOT EXISTS (SELECT * FROM `{$this->getTable('mst_blog_store_post')}`
-                AS `store_post`
-                WHERE e.entity_id = store_post.post_id)", [0, $storeId]);
+        $this->getSelect();
 
         return $this;
     }

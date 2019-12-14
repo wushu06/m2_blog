@@ -1,0 +1,42 @@
+<?php
+//@codingStandardsIgnoreFile
+
+/** @var \Mirasvit\Blog\Block\Post\PostList $block */
+$collection = $block->getPostCollection();
+?>
+
+<?php if ($collection->count()): ?>
+    <div class="blog__post-list-wrapper">
+        <ol class="blog__post-list">
+            <?php /** @var \Mirasvit\Blog\Api\Data\PostInterface $post */ ?>
+            <?php foreach ($collection as $post): ?>
+
+                <li class="blog__post-item" style="background: url('<?php echo $post->getFeaturedImageUrl() ?>') no-repeat">
+                    <div class="overlay"></div>
+                    <div class="blog__post-excerpt" itemprop="text">
+                        <?php if ($post->getFeaturedImageUrl() && $post->getFeaturedShowOnHome()): ?>
+                        <?php endif ?>
+                        <a href="<?= $post->getUrl() ?>" >
+                            <span class="blog__post-excerpt_content">
+                                <header class="blog__post-header">
+                                    <h2 class="blog__post-title" itemprop="headline">
+                                        <?= $post->getName() ?>
+                                    </h2>
+                                </header>
+                                <?= $block->getContentMoreTag($post) ?>
+                                <span><?= __('Read more...') ?></span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+
+            <?php endforeach ?>
+        </ol>
+
+        <?= $block->getToolbarHtml() ?>
+    </div>
+<?php else: ?>
+    <div class="message notice">
+        <div><?= __('There are no posts available for this category.') ?></div>
+    </div>
+<?php endif ?>

@@ -89,6 +89,10 @@ class Url
      */
     protected function getUrl($route, $type, $urlParams = [])
     {
+        echo '<pre>';
+        var_dump($route);
+        echo '</pre>';
+        die();
         $url = $this->urlManager->getUrl($this->config->getBaseRoute() . $route, $urlParams);
 
         if ($type == 'post' && $this->config->getPostUrlSuffix()) {

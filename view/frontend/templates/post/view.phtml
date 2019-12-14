@@ -1,0 +1,20 @@
+<?php
+//@codingStandardsIgnoreFile
+
+/** @var \Tbb\Blog\Block\Post\View $block */
+$post = $block->getPost();
+?>
+
+<div class="blog__post-view">
+
+   <!-- <?php /*if ($post->getFeaturedImageUrl()): */?>
+        <img src="<?/*= $post->getFeaturedImageUrl() */?>"  alt="<?/*= $post->getName() */?>" class="blog__post-featured-image"/>
+    --><?php /*endif */?>
+    <?= $block->getPostContent() ?>
+
+
+
+
+
+
+</div>

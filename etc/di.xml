@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!--DATA-->
+    <preference for="Tbb\Blog\Api\Data\PostInterface" type="Tbb\Blog\Model\Post"/>
+
+
+    <!--REPOSITORY-->
+    <preference for="Tbb\Blog\Api\Repository\PostRepositoryInterface" type="Tbb\Blog\Repository\PostRepository"/>
+
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="blog_post_listing_data_source" xsi:type="string">Tbb\Blog\Model\ResourceModel\Post\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Tbb\Blog\Model\ResourceModel\Post\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mst_blog_post_entity</argument>
+            <argument name="eventPrefix" xsi:type="string">blog_post_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">post_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tbb\Blog\Model\ResourceModel\Post</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Eav\Model\Entity\AttributeCache">
+        <arguments>
+            <argument name="unsupportedTypes" xsi:type="array">
+                <item name="blog_post" xsi:type="string">blog_post</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tbb_Blog::blog" title="Blog" module="Tbb_Blog" sortOrder="700"
+             resource="Tbb_Blog::blog" parent="Magento_Backend::content" />
+
+        <add id="Tbb_Blog::blog_post" title="All Posts" module="Tbb_Blog" sortOrder="10"
+             resource="Tbb_Blog::blog_post" parent="Tbb_Blog::blog" action="blog/post" />
+
+        <add id="Tbb_Blog::blog_category" title="Categories" module="Tbb_Blog" sortOrder="20"
+             resource="Tbb_Blog::blog_category" parent="Tbb_Blog::blog" action="blog/category" />
+
+        <!--<add id="Tbb_Blog::blog_author" title="Authors" module="Tbb_Blog" sortOrder="25"-->
+             <!--resource="Tbb_Blog::blog_author" parent="Tbb_Blog::blog" action="blog/author" />-->
+
+        <add id="Tbb_Blog::blog_settings" title="Settings" module="Tbb_Blog" sortOrder="30"
+             resource="Tbb_Blog::blog_settings" parent="Tbb_Blog::blog" action="adminhtml/system_config/edit/section/blog" />
+    </menu>
+</config>
